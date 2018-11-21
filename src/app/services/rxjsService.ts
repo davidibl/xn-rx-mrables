@@ -17,15 +17,23 @@ export class RxjsService {
     }
 
     private init() {
-        const marbles = [new Marble(1), new Marble(2, 5000), new Marble(3, 10000)];
-        const marbles2 = [new Marble('a', 1000), new Marble('b', 500), new Marble('c', 5500)];
-        const obs1 = this.getObservableOfArray(marbles);
-        const obs2 = this.getObservableOfArray(marbles2);
+        const obs1 = this.createNumberMarbles(0, 5000, 10000);
+        const obs2 = this.createCharMarbles(1000,  500, 5500);
 
         const obs3 = of(new Marble(1));
         const observables = [obs1, obs2, obs3];
 
         this.item.next(observables);
+    }
+
+    private createNumberMarbles(delay1 = 0, delay2 = 1, delay3 = 2, ...marbles: Marble[]) {
+        return this.getObservableOfArray(
+            [new Marble(1, delay1), new Marble(2, delay2), new Marble(3, delay3), ...marbles]);
+    }
+
+    private createCharMarbles(delay1 = 0, delay2 = 1, delay3 = 2, ...marbles: Marble[]) {
+        return this.getObservableOfArray(
+            [new Marble('a', delay1), new Marble('b', delay2), new Marble('c', delay3), ...marbles]);
     }
 
     private getObservableOfArray(marbles: Marble[]) {

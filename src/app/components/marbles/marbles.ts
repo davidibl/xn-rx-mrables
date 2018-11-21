@@ -25,8 +25,8 @@ import { RxjsService } from '../../services/rxjsService';
           transition('* => show',
             animate('2000ms', keyframes([
                 style({transform: 'translateY(0)', offset: 0}),
-                style({transform: 'translateY(50%)', offset: 0.33}),
-                style({transform: 'translateY(500%)', offset: 0.90}),
+                style({transform: 'translateY(40px)', offset: 0.33}),
+                style({transform: 'translateY(325px)', offset: 0.90}),
                 style({opacity: 0, offset: 1.0}),
             ])
             ))

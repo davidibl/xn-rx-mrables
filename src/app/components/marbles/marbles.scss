@@ -1,0 +1,89 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.playground {
+    position: relative;
+    padding-top: 10px;
+    height: 80%;
+    width: 40%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.line {
+    width: 1px;
+    height: 70%;
+    border: 1px solid #333;
+    background-color: #333;
+    margin-bottom: 10px;
+}
+
+.console {
+    resize: none;
+    width: 80%;
+}
+
+.marble {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: brown;
+    position: absolute;
+    left: calc(50% - 25px);
+    top: 10px;
+}
+
+.marble.cl-1 {
+    background-color: red;
+}
+
+.marble.cl-2 {
+    background-color: green;
+}
+
+.marble.cl-3 {
+    background-color: yellow;
+}
+
+.marble.cl-4 {
+    background-color: blue;
+}
+
+.marble.cl-5 {
+    background-color: violet;
+}
+
+.marble.cl-6 {
+    background-color: blueviolet;
+}
+
+.marble.cl-a {
+    background-color: rgb(238, 96, 96);
+}
+
+.marble.cl-b {
+    background-color: rgb(131, 216, 131);
+}
+
+.marble.cl-c {
+    background-color: rgb(241, 241, 141);
+}
+
+.marble.cl-d {
+    background-color: rgb(141, 141, 245);
+}
+
+.marble.cl-e {
+    background-color: rgb(233, 169, 233);
+}
+
+.marble.cl-f {
+    background-color: rgb(183, 137, 226);
+}

@@ -1,0 +1,14 @@
+<div class="playground">
+    <span *ngFor="let marble of marblesArray">
+        <div *ngIf="!marble.hidden"
+             [ngClass]="'cl-' + marble.text"
+             [@comeon]="'show'"
+             (@comeon.done)="animationEnd(marble)"
+             class="marble"></div>
+    </span>
+    <div class="line">
+
+    </div>
+    <textarea readonly="true" [(ngModel)]="consoleText" class="console" rows="3"></textarea>
+</div>
+

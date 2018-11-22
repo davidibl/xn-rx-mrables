@@ -35,6 +35,7 @@ import { RxjsService } from '../../services/rxjsService';
 })
 export class MarblesComponent implements OnInit {
 
+    private counter = 0;
     private marblesDone: Marble[];
     public marblesArray = [];
     public consoleText = '';
@@ -58,8 +59,32 @@ export class MarblesComponent implements OnInit {
         if (this.marblesDone.indexOf(element) > -1) {
             return;
         }
+        this.counter++;
         this.marblesDone.push(element);
         element.hidden = true;
+        element.timing = this.counter;
         this.consoleText = this.consoleText + element.text + '\n';
+    }
+
+    public getObservables() {
+        return this.marblesDone.map(marble => marble.observableId).filter((id, index, self) => self.indexOf(id) > -1);
+    }
+
+    public getMarblesDoneByObservableId(id) {
+        return this.marblesDone.filter(marble => marble.observableId === id);
+    }
+
+    public getMarblesDonesByObservables() {
+        const obj = {};
+        this.marblesDone.forEach(marble => {
+            if (!marble.observableId) {
+                marble.observableId = 10;
+            }
+            if (!obj[marble.observableId]) {
+                obj[marble.observableId] = [];
+            }
+            obj[marble.observableId].push(marble);
+        });
+        return Object.values(obj);
     }
 }

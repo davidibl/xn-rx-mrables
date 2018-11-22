@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, Observable, of, from, timer } from 'rxjs';
-import { delay, shareReplay, switchMap, delayWhen } from 'rxjs/operators';
+import { delay, delayWhen, tap } from 'rxjs/operators';
 import { Marble } from '../model/marble';
 
 @Injectable()
 export class RxjsService {
 
     private item = new ReplaySubject<Observable<any>[]>(1);
+    private observableCount = 0;
 
     public constructor() {
         of(null).pipe( delay(2000) ).subscribe(val => this.init());
@@ -37,6 +38,11 @@ export class RxjsService {
     }
 
     private getObservableOfArray(marbles: Marble[]) {
-        return from(marbles).pipe( delayWhen(marble => timer(marble.delay)) );
+        this.observableCount += 1;
+        marbles.forEach(marble => marble.observableId = this.observableCount);
+        return from(marbles)
+            .pipe(
+                delayWhen(marble => timer(marble.delay))
+            );
     }
 }

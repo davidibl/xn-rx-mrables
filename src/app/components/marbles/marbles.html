@@ -11,4 +11,12 @@
     </div>
     <textarea readonly="true" [(ngModel)]="consoleText" class="console" rows="3"></textarea>
 </div>
+<div class="showroom">
+    <div *ngFor="let obsArray of getMarblesDonesByObservables()">
+        <ng-container *ngFor="let marble of obsArray">
+            <div [ngClass]="'cl-' + marble.text" 
+                class="marble done">{{marble.text}}</div>
+        </ng-container>
+    </div>
+</div>
 

@@ -1,7 +1,9 @@
 {
   "name": "xn-rx-mrables",
   "version": "1.0.0",
-  "author": { "name": "David Ibl" },
+  "author": {
+    "name": "David Ibl"
+  },
   "description": "rxjs Marble simulator",
   "scripts": {
     "ng": "ng",
